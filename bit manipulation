@@ -1,0 +1,27 @@
+def counterGame(n):
+    if n==1:
+        return "Richard"
+    flag=0
+    while n!=1:
+        s=bin(n)
+        s=s[2:]
+        old=n
+        f=0
+        for i in s:
+            if i=='1':
+                f+=1
+        if f==1:
+            n=n//2
+            flag+=1
+        else:
+            l=list(map(lambda x:x,s))
+            for i in range(1,len(l)):
+                l[i]='0'
+            temp=''
+            num=temp.join(l)
+            num=int(num,2)
+            n=old-num
+            flag+=1
+    if flag%2==0:
+        return "Richard"
+    return "Louise"
